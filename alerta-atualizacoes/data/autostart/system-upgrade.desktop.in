@@ -1,9 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=System Update Check
-Name[pt_BR]=Verificação de atualizações do sistema
 Comment=Notify when system updates are available
-Comment[pt_BR]=Avise quando houver atualizações do sistema
 Exec=/usr/bin/system-upgrade
 Icon=system-software-update
 Terminal=false
