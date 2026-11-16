@@ -13,6 +13,7 @@ for required_path in \
     ./usr/bin/system-upgrade \
     ./etc/xdg/autostart/system-upgrade.desktop \
     ./usr/share/applications/system-upgrade.desktop \
+    ./usr/share/locale/pt_BR/LC_MESSAGES/system-upgrade.mo \
     ./etc/sudoers.d/system-upgrade
 do
     printf '%s\n' "$contents" | awk '{print $6}' | grep -Fx "$required_path" >/dev/null

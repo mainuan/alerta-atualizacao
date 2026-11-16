@@ -11,7 +11,7 @@ cmake_version=$(sed -nE \
     CMakeLists.txt)
 appstream_version=$(sed -nE \
     's/.*<release version="([^"]+)".*/\1/p' \
-    data/metainfo/io.github.aratie_os.system_upgrade.metainfo.xml | sed -n '1p')
+    data/metainfo/io.github.aratie_os.system_upgrade.metainfo.xml.in | sed -n '1p')
 
 if [ -z "$cmake_version" ] || [ -z "$appstream_version" ]; then
     echo "Could not read every declared project version" >&2

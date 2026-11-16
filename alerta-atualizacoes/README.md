@@ -34,7 +34,8 @@ No Kubuntu 26.04:
 
 ```sh
 sudo apt install build-essential cmake ninja-build debhelper devscripts \
-  lintian qt6-base-dev qt6-svg-dev liblayershellqtinterface-dev
+  lintian qt6-base-dev qt6-svg-dev liblayershellqtinterface-dev \
+  libkf6i18n-dev gettext
 ```
 
 ## Compilacao e testes
@@ -48,7 +49,8 @@ ctest --test-dir build --output-on-failure
 Os testes cobrem simulacao APT vazia, operacoes `Inst`, pacotes retidos por
 phased updates, referencias Flatpak, combinacao final dos estados, parsing de
 `boot=casper`, bloqueio integrado da inicializacao Live, posicionamento e o
-ambiente de sessao repassado ao Discover.
+ambiente de sessao repassado ao Discover. Os testes `i18n_tests_*` exibem o
+alerta real em `pt_BR` e em ingles (ver `docs/i18n/README.md`).
 
 ## Pacote Debian
 

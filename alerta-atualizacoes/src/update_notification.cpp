@@ -2,6 +2,7 @@
 
 #include "window_placement.h"
 
+#include <KLocalizedString>
 #include <LayerShellQt/Window>
 
 #include <QGuiApplication>
@@ -28,7 +29,8 @@ public:
         , m_fallback(QIcon::fromTheme(QStringLiteral("dialog-warning")))
     {
         setFixedSize(alertIconSize, alertIconSize);
-        setAccessibleName(tr("Alerta de atualização"));
+        // i18n: accessible name of the warning icon shown in the alert
+        setAccessibleName(i18n("Update alert"));
     }
 
 protected:
@@ -59,7 +61,7 @@ UpdateNotification::UpdateNotification(bool waylandSession, QWidget *parent)
     : QDialog(parent)
     , m_waylandSession(waylandSession)
 {
-    setWindowTitle(tr("Atualizações disponíveis"));
+    setWindowTitle(i18n("Updates Available"));
     QIcon windowIcon(QString::fromLatin1(preferredIconPath));
     if (windowIcon.isNull()) {
         windowIcon = QIcon::fromTheme(QStringLiteral("dialog-warning"));
@@ -70,21 +72,21 @@ UpdateNotification::UpdateNotification(bool waylandSession, QWidget *parent)
     setMinimumWidth(420);
     setMaximumWidth(520);
 
-    auto *titleLabel = new QLabel(tr("Atualizações disponíveis"), this);
+    auto *titleLabel = new QLabel(i18n("Updates Available"), this);
     QFont titleFont = titleLabel->font();
     titleFont.setBold(true);
     titleFont.setPointSizeF(titleFont.pointSizeF() + 1.0);
     titleLabel->setFont(titleFont);
 
     auto *messageLabel = new QLabel(
-        tr("Existem atualizações disponíveis para o sistema."), this);
+        i18n("Updates are available for the system."), this);
     messageLabel->setWordWrap(true);
     messageLabel->setMinimumWidth(290);
 
     auto *updateButton = new QPushButton(
-        QIcon::fromTheme(QStringLiteral("system-software-update")), tr("Atualizar"), this);
+        QIcon::fromTheme(QStringLiteral("system-software-update")), i18nc("@action:button", "Update"), this);
     auto *cancelButton = new QPushButton(
-        QIcon::fromTheme(QStringLiteral("dialog-cancel")), tr("Cancelar"), this);
+        QIcon::fromTheme(QStringLiteral("dialog-cancel")), i18nc("@action:button", "Cancel"), this);
     updateButton->setDefault(true);
 
     auto *buttonLayout = new QHBoxLayout;

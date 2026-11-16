@@ -1,0 +1,6 @@
+# Files with translatable strings, relative to the project root.
+src/main.cpp
+src/update_notification.cpp
+[Desktop] data/applications/system-upgrade.desktop.in
+[Desktop] data/autostart/system-upgrade.desktop.in
+[ITS] data/metainfo/io.github.aratie_os.system_upgrade.metainfo.xml.in
