@@ -1,0 +1,80 @@
+# Korean translations for system-upgrade package.
+# Copyright (C) 2026 Mainuan
+# This file is distributed under the same license as the system-upgrade package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: system-upgrade\n"
+"Report-Msgid-Bugs-To: https://github.com/aratie-os/alerta-atualizacao/"
+"issues\n"
+"POT-Creation-Date: 2026-11-16 11:14-0300\n"
+"PO-Revision-Date: 2026-11-16 11:14-0300\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: ko <https://github.com/mainuan>\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: data/applications/system-upgrade.desktop.in:3
+#: data/metainfo/io.github.aratie_os.system_upgrade.metainfo.xml.in:4
+msgid "System Updates"
+msgstr "시스템 업데이트"
+
+#: data/applications/system-upgrade.desktop.in:4
+#: data/metainfo/io.github.aratie_os.system_upgrade.metainfo.xml.in:5
+msgid "Check for operating system and Flatpak updates"
+msgstr "운영 체제 및 Flatpak 업데이트 확인"
+
+#: data/applications/system-upgrade.desktop.in:9
+msgid "update;upgrade;packages;software;"
+msgstr "업데이트;업그레이드;패키지;소프트웨어;update;upgrade;"
+
+#: data/autostart/system-upgrade.desktop.in:3
+msgid "System Update Check"
+msgstr "시스템 업데이트 확인"
+
+#: data/autostart/system-upgrade.desktop.in:4
+msgid "Notify when system updates are available"
+msgstr "시스템 업데이트를 사용할 수 있으면 알림"
+
+# reviewed: Source (origem de pacotes/repositório) = 원본, como no Discover ko e
+# no instalador Flatpak; 소스 sugere código-fonte
+#: data/metainfo/io.github.aratie_os.system_upgrade.metainfo.xml.in:12
+msgid ""
+"System Updates checks APT and Flatpak sources at Plasma login and opens "
+"Discover when the user chooses to update."
+msgstr ""
+"시스템 업데이트는 Plasma 로그인 시 APT 및 Flatpak 원본을 확인하고, 사용자가 "
+"업데이트를 선택하면 Discover를 엽니다."
+
+#: src/main.cpp:55 src/update_notification.cpp:64
+#: src/update_notification.cpp:75
+#, kde-format
+msgid "Updates Available"
+msgstr "업데이트 사용 가능"
+
+#. i18n: accessible name of the warning icon shown in the alert
+#: src/update_notification.cpp:33
+#, kde-format
+msgid "Update alert"
+msgstr "업데이트 알림"
+
+#: src/update_notification.cpp:82
+#, kde-format
+msgid "Updates are available for the system."
+msgstr "시스템 업데이트를 사용할 수 있습니다."
+
+#: src/update_notification.cpp:87
+#, kde-format
+msgctxt "@action:button"
+msgid "Update"
+msgstr "업데이트"
+
+#: src/update_notification.cpp:89
+#, kde-format
+msgctxt "@action:button"
+msgid "Cancel"
+msgstr "취소"

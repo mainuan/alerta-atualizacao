@@ -1,0 +1,79 @@
+# Bengali translations for system-upgrade package.
+# Copyright (C) 2026 Mainuan
+# This file is distributed under the same license as the system-upgrade package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: system-upgrade\n"
+"Report-Msgid-Bugs-To: https://github.com/aratie-os/alerta-atualizacao/"
+"issues\n"
+"POT-Creation-Date: 2026-11-16 11:14-0300\n"
+"PO-Revision-Date: 2026-11-16 11:14-0300\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: bn <https://github.com/mainuan>\n"
+"Language: bn\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/applications/system-upgrade.desktop.in:3
+#: data/metainfo/io.github.aratie_os.system_upgrade.metainfo.xml.in:4
+msgid "System Updates"
+msgstr "সিস্টেম আপডেট"
+
+#: data/applications/system-upgrade.desktop.in:4
+#: data/metainfo/io.github.aratie_os.system_upgrade.metainfo.xml.in:5
+msgid "Check for operating system and Flatpak updates"
+msgstr "অপারেটিং সিস্টেম ও Flatpak-এর আপডেট পরীক্ষা করুন"
+
+#: data/applications/system-upgrade.desktop.in:9
+msgid "update;upgrade;packages;software;"
+msgstr "আপডেট;আপগ্রেড;প্যাকেজ;সফটওয়্যার;হালনাগাদ;update;upgrade;packages;software;"
+
+#: data/autostart/system-upgrade.desktop.in:3
+msgid "System Update Check"
+msgstr "সিস্টেম আপডেট পরীক্ষা"
+
+# reviewed: descrição do .desktop: "জানান" (imperativo) mandava o usuário
+# avisar; forma descritiva como na entrada 12
+#: data/autostart/system-upgrade.desktop.in:4
+msgid "Notify when system updates are available"
+msgstr "সিস্টেম আপডেট উপলব্ধ হলে বিজ্ঞপ্তি দেখায়"
+
+#: data/metainfo/io.github.aratie_os.system_upgrade.metainfo.xml.in:12
+msgid ""
+"System Updates checks APT and Flatpak sources at Plasma login and opens "
+"Discover when the user chooses to update."
+msgstr ""
+"সিস্টেম আপডেট Plasma-তে লগইন করার সময় APT ও Flatpak উৎস পরীক্ষা করে এবং "
+"ব্যবহারকারী আপডেট করতে চাইলে Discover খোলে।"
+
+#: src/main.cpp:55 src/update_notification.cpp:64
+#: src/update_notification.cpp:75
+#, kde-format
+msgid "Updates Available"
+msgstr "আপডেট উপলব্ধ"
+
+#. i18n: accessible name of the warning icon shown in the alert
+#: src/update_notification.cpp:33
+#, kde-format
+msgid "Update alert"
+msgstr "আপডেট সতর্কতা"
+
+#: src/update_notification.cpp:82
+#, kde-format
+msgid "Updates are available for the system."
+msgstr "সিস্টেমের জন্য আপডেট উপলব্ধ।"
+
+#: src/update_notification.cpp:87
+#, kde-format
+msgctxt "@action:button"
+msgid "Update"
+msgstr "আপডেট করুন"
+
+#: src/update_notification.cpp:89
+#, kde-format
+msgctxt "@action:button"
+msgid "Cancel"
+msgstr "বাতিল করুন"
