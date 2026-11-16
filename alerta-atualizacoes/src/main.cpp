@@ -3,6 +3,7 @@
 #include "update_checker.h"
 #include "update_notification.h"
 
+#include <KLocalizedString>
 #include <LayerShellQt/Shell>
 
 #include <QApplication>
@@ -40,9 +41,18 @@ void openDiscover(const QProcessEnvironment &sessionEnvironment)
 
 int runInstalledSession(int argc, char *argv[])
 {
+    // The gettext domain is the Debian package name; catalogs are looked up in
+    // $XDG_DATA_DIRS/locale (/usr/share/locale when installed).
+    KLocalizedString::setApplicationDomain(QByteArrayLiteral("system-upgrade"));
+    // Optional: run from a build tree with SYSTEM_UPGRADE_LOCALEDIR=<build>/locale.
+    const QString localeDirectory = qEnvironmentVariable("SYSTEM_UPGRADE_LOCALEDIR");
+    if (!localeDirectory.isEmpty()) {
+        KLocalizedString::addDomainLocaleDir(QByteArrayLiteral("system-upgrade"), localeDirectory);
+    }
+
     QApplication application(argc, argv);
     QApplication::setApplicationName(QStringLiteral("system-upgrade"));
-    QApplication::setApplicationDisplayName(QObject::tr("Atualizações disponíveis"));
+    QApplication::setApplicationDisplayName(i18n("Updates Available"));
     QApplication::setOrganizationName(QStringLiteral("Aratie OS"));
     QApplication::setQuitOnLastWindowClosed(true);
 
