@@ -1,0 +1,78 @@
+# Vietnamese translations for system-upgrade package.
+# Copyright (C) 2026 Mainuan
+# This file is distributed under the same license as the system-upgrade package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: system-upgrade\n"
+"Report-Msgid-Bugs-To: https://github.com/aratie-os/alerta-atualizacao/"
+"issues\n"
+"POT-Creation-Date: 2026-11-16 12:19-0300\n"
+"PO-Revision-Date: 2026-11-16 12:19-0300\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: vi <https://github.com/mainuan>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: data/applications/system-upgrade.desktop.in:3
+#: data/metainfo/io.github.aratie_os.system_upgrade.metainfo.xml.in:4
+msgid "System Updates"
+msgstr "Cập nhật hệ thống"
+
+#: data/applications/system-upgrade.desktop.in:4
+#: data/metainfo/io.github.aratie_os.system_upgrade.metainfo.xml.in:5
+msgid "Check for operating system and Flatpak updates"
+msgstr "Kiểm tra cập nhật cho hệ điều hành và Flatpak"
+
+#: data/applications/system-upgrade.desktop.in:9
+msgid "update;upgrade;packages;software;"
+msgstr "cập nhật;nâng cấp;gói;phần mềm;update;upgrade;packages;software;"
+
+#: data/autostart/system-upgrade.desktop.in:3
+msgid "System Update Check"
+msgstr "Kiểm tra cập nhật hệ thống"
+
+#: data/autostart/system-upgrade.desktop.in:4
+msgid "Notify when system updates are available"
+msgstr "Thông báo khi có cập nhật hệ thống"
+
+#: data/metainfo/io.github.aratie_os.system_upgrade.metainfo.xml.in:12
+msgid ""
+"System Updates checks APT and Flatpak sources at Plasma login and opens "
+"Discover when the user chooses to update."
+msgstr ""
+"Cập nhật hệ thống kiểm tra các nguồn APT và Flatpak khi đăng nhập Plasma và "
+"mở Discover khi người dùng chọn cập nhật."
+
+#: src/main.cpp:58 src/update_notification.cpp:64
+#: src/update_notification.cpp:75
+#, kde-format
+msgid "Updates Available"
+msgstr "Có bản cập nhật"
+
+#. i18n: accessible name of the warning icon shown in the alert
+#: src/update_notification.cpp:33
+#, kde-format
+msgid "Update alert"
+msgstr "Cảnh báo cập nhật"
+
+#: src/update_notification.cpp:82
+#, kde-format
+msgid "Updates are available for the system."
+msgstr "Hệ thống có bản cập nhật mới."
+
+#: src/update_notification.cpp:87
+#, kde-format
+msgctxt "@action:button"
+msgid "Update"
+msgstr "Cập nhật"
+
+#: src/update_notification.cpp:89
+#, kde-format
+msgctxt "@action:button"
+msgid "Cancel"
+msgstr "Huỷ"
