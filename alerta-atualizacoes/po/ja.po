@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: system-upgrade\n"
 "Report-Msgid-Bugs-To: https://github.com/aratie-os/alerta-atualizacao/"
 "issues\n"
-"POT-Creation-Date: 2026-11-16 11:14-0300\n"
+"POT-Creation-Date: 2026-11-16 12:19-0300\n"
 "PO-Revision-Date: 2026-11-16 11:14-0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: ja <https://github.com/mainuan>\n"
@@ -51,7 +51,7 @@ msgstr ""
 "システムの更新は、Plasma へのログイン時に APT と Flatpak のソースを確認し、"
 "ユーザが更新を選択すると Discover を開きます。"
 
-#: src/main.cpp:55 src/update_notification.cpp:64
+#: src/main.cpp:58 src/update_notification.cpp:64
 #: src/update_notification.cpp:75
 #, kde-format
 msgid "Updates Available"

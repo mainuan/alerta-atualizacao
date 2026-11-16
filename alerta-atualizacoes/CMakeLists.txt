@@ -29,6 +29,7 @@ target_include_directories(system_upgrade_logic PUBLIC "${CMAKE_CURRENT_SOURCE_D
 target_link_libraries(system_upgrade_logic PUBLIC Qt6::Core Qt6::Gui)
 
 add_executable(system-upgrade
+    src/catalog_layout_direction.h
     src/main.cpp
     src/update_checker.cpp
     src/update_checker.h

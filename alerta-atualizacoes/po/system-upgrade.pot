@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: system-upgrade\n"
 "Report-Msgid-Bugs-To: https://github.com/aratie-os/alerta-atualizacao/"
 "issues\n"
-"POT-Creation-Date: 2026-11-16 11:14-0300\n"
+"POT-Creation-Date: 2026-11-16 12:19-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,7 +46,7 @@ msgid ""
 "Discover when the user chooses to update."
 msgstr ""
 
-#: src/main.cpp:55 src/update_notification.cpp:64
+#: src/main.cpp:58 src/update_notification.cpp:64
 #: src/update_notification.cpp:75
 #, kde-format
 msgid "Updates Available"

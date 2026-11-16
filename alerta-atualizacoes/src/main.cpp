@@ -1,3 +1,4 @@
+#include "catalog_layout_direction.h"
 #include "discover_launcher.h"
 #include "startup.h"
 #include "update_checker.h"
@@ -51,6 +52,8 @@ int runInstalledSession(int argc, char *argv[])
     }
 
     QApplication application(argc, argv);
+    // Mirror the interface for a right-to-left catalog even without qtbase_<lang>.
+    CatalogLayoutDirection::apply(application);
     QApplication::setApplicationName(QStringLiteral("system-upgrade"));
     QApplication::setApplicationDisplayName(i18n("Updates Available"));
     QApplication::setOrganizationName(QStringLiteral("Aratie OS"));

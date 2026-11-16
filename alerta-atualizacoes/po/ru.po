@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: system-upgrade\n"
 "Report-Msgid-Bugs-To: https://github.com/aratie-os/alerta-atualizacao/"
 "issues\n"
-"POT-Creation-Date: 2026-11-16 11:14-0300\n"
+"POT-Creation-Date: 2026-11-16 12:19-0300\n"
 "PO-Revision-Date: 2026-11-16 11:14-0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: ru <https://github.com/mainuan>\n"
@@ -49,7 +49,7 @@ msgstr ""
 "«Обновления системы» проверяет источники APT и Flatpak при входе в Plasma и "
 "открывает Discover, когда пользователь решает выполнить обновление."
 
-#: src/main.cpp:55 src/update_notification.cpp:64
+#: src/main.cpp:58 src/update_notification.cpp:64
 #: src/update_notification.cpp:75
 #, kde-format
 msgid "Updates Available"
