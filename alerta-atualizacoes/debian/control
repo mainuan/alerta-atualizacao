@@ -6,6 +6,8 @@ Build-Depends:
  debhelper-compat (= 13),
  cmake,
  g++,
+ gettext,
+ libkf6i18n-dev,
  liblayershellqtinterface-dev,
  qt6-base-dev (>= 6.6),
  qt6-svg-dev
