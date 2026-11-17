@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.22)
 
-project(system-upgrade VERSION 2.0.4 LANGUAGES CXX)
+project(system-upgrade VERSION 2.0.5 LANGUAGES CXX)
 
 include(CTest)
 include(GNUInstallDirs)
@@ -20,6 +20,8 @@ add_library(system_upgrade_logic STATIC
     src/discover_launcher.h
     src/startup.cpp
     src/startup.h
+    src/update_checker.cpp
+    src/update_checker.h
     src/update_state.cpp
     src/update_state.h
     src/window_placement.cpp
@@ -31,8 +33,6 @@ target_link_libraries(system_upgrade_logic PUBLIC Qt6::Core Qt6::Gui)
 add_executable(system-upgrade
     src/catalog_layout_direction.h
     src/main.cpp
-    src/update_checker.cpp
-    src/update_checker.h
     src/update_notification.cpp
     src/update_notification.h
 )

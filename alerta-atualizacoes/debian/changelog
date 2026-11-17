@@ -1,3 +1,20 @@
+system-upgrade (2.0.5) resolute; urgency=medium
+
+  * Interface traduzida com KI18n (gettext) em 33 idiomas, seguindo o idioma
+    do Plasma; .desktop e metainfo também traduzidos, com espelhamento da
+    interface para idiomas da direita para a esquerda.
+  * Corrige verificação que nunca terminava quando um comando (apt-get,
+    flatpak ou sudo) não podia ser iniciado: a etapa seguinte era descartada
+    pelo QProcess e o programa ficava rodando sem interface. Teste de
+    regressão incluído.
+  * Endereços do projeto apontam para github.com/mainuan/alerta-atualizacao.
+  * Empacotamento: mantenedor real, copyright DEP-5 conforme o histórico,
+    testes executados no build (offscreen) e CI com o pipeline compartilhado
+    do Mainuan (lintian, instalação, teste de fumaça, remoção e expurgo em
+    Ubuntu 26.04 limpo).
+
+ -- ruscher <rruscher@gmail.com>  Tue, 17 Nov 2026 12:00:00 -0300
+
 system-upgrade (2.0.4) resolute; urgency=medium
 
   * Correct project URLs and restore the top-level GPL license and README.

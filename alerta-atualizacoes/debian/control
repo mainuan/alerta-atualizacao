@@ -1,19 +1,22 @@
 Source: system-upgrade
 Section: admin
 Priority: optional
-Maintainer: Aratie OS Developers <aratie-os@users.noreply.github.com>
+Maintainer: Daigo <openwebosbr@gmail.com>
+Uploaders: ruscher <rruscher@gmail.com>
 Build-Depends:
  debhelper-compat (= 13),
  cmake,
- g++,
  gettext,
  libkf6i18n-dev,
  liblayershellqtinterface-dev,
+ locales-all <!nocheck>,
  qt6-base-dev (>= 6.6),
- qt6-svg-dev
+ qt6-svg-dev,
+ sudo <!nocheck>
 Standards-Version: 4.7.2
 Rules-Requires-Root: no
 Homepage: https://github.com/mainuan/alerta-atualizacao
+Vcs-Browser: https://github.com/mainuan/alerta-atualizacao
 Vcs-Git: https://github.com/mainuan/alerta-atualizacao.git
 
 Package: system-upgrade
@@ -31,3 +34,7 @@ Description: compact update alert for KDE Plasma
  Checks APT and system/user Flatpak sources when a Plasma session starts.
  It displays a compact Qt 6 alert only when updates exist and opens Discover
  when the user chooses to update.
+ .
+ The APT index refresh runs through a sudoers rule that allows only the
+ fixed command "apt-get update" without a password; installing updates is
+ left to Discover.

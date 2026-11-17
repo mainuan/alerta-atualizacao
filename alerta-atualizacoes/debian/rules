@@ -1,4 +1,10 @@
 #!/usr/bin/make -f
+# The tests show the real alert widget; no display server in the build.
+export QT_QPA_PLATFORM = offscreen
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 
 %:
 	dh $@ --buildsystem=cmake
+
+override_dh_auto_configure:
+	dh_auto_configure -- -DBUILD_TESTING=$(if $(filter nocheck,$(DEB_BUILD_OPTIONS)),OFF,ON)

@@ -4,21 +4,22 @@
 
 #include <QObject>
 #include <QProcess>
+#include <QStringList>
 #include <QTimer>
+
+#include <array>
+
+struct UpdateCommand {
+    QString program;
+    QStringList arguments;
+    int timeoutMilliseconds = 0;
+};
 
 class UpdateChecker final : public QObject
 {
     Q_OBJECT
 
 public:
-    explicit UpdateChecker(QObject *parent = nullptr);
-
-    void start();
-
-signals:
-    void finished(const UpdateState &state);
-
-private:
     enum class Step {
         Idle,
         AptUpdate,
@@ -28,15 +29,28 @@ private:
         Complete,
     };
 
-    void runCommand(Step step,
-                    const QString &program,
-                    const QStringList &arguments,
-                    int timeoutMilliseconds);
+    explicit UpdateChecker(QObject *parent = nullptr);
+
+    void start();
+
+    // Replaces the command of one check step (AptUpdate..FlatpakUser); tests
+    // use it to run the real state machine without root, APT or Flatpak.
+    void setCommand(Step step, const UpdateCommand &command);
+    [[nodiscard]] static UpdateCommand defaultCommand(Step step);
+
+signals:
+    void finished(const UpdateState &state);
+
+private:
+
+    void runCommand(Step step);
     void completeStep(bool commandSucceeded,
                       const QString &standardOutput,
                       const QString &standardError);
     void runNextStep();
+    void scheduleNextStep();
 
+    std::array<UpdateCommand, 4> m_commands;
     QProcess m_process;
     QTimer m_timeout;
     UpdateState m_state;

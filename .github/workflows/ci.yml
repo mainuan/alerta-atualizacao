@@ -1,0 +1,66 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    tags: ['v[0-9]*']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref_type != 'tag' }}
+
+jobs:
+  package:
+    permissions:
+      contents: write # only the release job uses it, and only for v* tags
+    uses: mainuan/.github/.github/workflows/debian-package.yml@2409a50535befe90ac3bbfc4db6eed7d65eac4e5
+    with:
+      package: system-upgrade
+      source-dir: alerta-atualizacoes
+      release-title: Alerta de Atualizações (system-upgrade)
+      # Version consistency (debian/changelog, CMake, AppStream), catalogs,
+      # sudoers syntax and the full CTest suite (no skipped test) in an
+      # out-of-tree build with -Werror.
+      test-command: |
+        scripts/check-version-consistency.sh
+        po/i18n.sh check-pot
+        po/i18n.sh validate
+        /usr/sbin/visudo -cf data/system-upgrade.sudoers
+        build="$(mktemp -d)"
+        cmake -S . -B "$build" -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wall -Wextra -Werror"
+        cmake --build "$build" --parallel 2
+        # -V shows the QtTest totals: the pt_BR test needs en_US.UTF-8
+        # (locales-all) and must not be skipped.
+        ctest --test-dir "$build" --output-on-failure -V | tee "$build/ctest.log"
+        test "$(grep -cE '^[0-9]+: Totals: .*, 0 failed, 0 skipped' "$build/ctest.log")" -eq 4
+        rm -rf "$build"
+      smoke-command: |
+        test -x /usr/bin/system-upgrade
+        test -f /usr/share/man/man1/system-upgrade.1.gz
+        test -f /usr/share/metainfo/io.github.aratie_os.system_upgrade.metainfo.xml
+        grep -qx 'Exec=/usr/bin/system-upgrade' /usr/share/applications/system-upgrade.desktop
+        grep -q '^Name\[pt_BR\]=' /usr/share/applications/system-upgrade.desktop
+        grep -qx 'OnlyShowIn=KDE;' /etc/xdg/autostart/system-upgrade.desktop
+        test "$(stat -c '%a %U:%G' /etc/sudoers.d/system-upgrade)" = '440 root:root'
+        for lang in pt_BR ar de es fr ja zh_CN; do
+          test -s "/usr/share/locale/$lang/LC_MESSAGES/system-upgrade.mo"
+        done
+        # The sudoers rule must let an ordinary user refresh the APT indexes.
+        sudo -n /usr/bin/apt-get -o Acquire::Retries=3 -o APT::Update::Error-Mode=any update
+        # A real run: refresh, APT/Flatpak queries, alert (offscreen) if any
+        # update exists. 0 = no updates; 124 = alert still open at the timeout.
+        cd "$HOME"
+        set +e
+        QT_FORCE_STDERR_LOGGING=1 timeout 240 system-upgrade > run.log 2>&1
+        rc=$?
+        set -e
+        cat run.log
+        case "$rc" in 0|124) ;; *) echo "::error::system-upgrade exited with $rc"; exit 1 ;; esac
+        if grep -q 'Update command failed: /usr/bin/sudo' run.log; then
+          echo "::error::APT refresh through sudo failed"; exit 1
+        fi

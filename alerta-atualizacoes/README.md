@@ -49,16 +49,24 @@ ctest --test-dir build --output-on-failure
 Os testes cobrem simulacao APT vazia, operacoes `Inst`, pacotes retidos por
 phased updates, referencias Flatpak, combinacao final dos estados, parsing de
 `boot=casper`, bloqueio integrado da inicializacao Live, posicionamento e o
-ambiente de sessao repassado ao Discover. Os testes `i18n_tests_*` exibem o
+ambiente de sessao repassado ao Discover, alem da maquina de estados completa
+do verificador com comandos substitutos (inclusive comando que nao pode ser
+iniciado). Os testes `i18n_tests_*` exibem o
 alerta real em `pt_BR` e em ingles (ver `docs/i18n/README.md`).
 
 ## Pacote Debian
 
 ```sh
 dpkg-buildpackage -us -uc -b
-scripts/validate-package.sh ../system-upgrade_2.0.4_amd64.deb
-lintian --fail-on error ../system-upgrade_2.0.4_amd64.changes
+scripts/validate-package.sh ../system-upgrade_2.0.5_amd64.deb
+lintian --fail-on error ../system-upgrade_2.0.5_amd64.changes
 ```
+
+O CI (`.github/workflows/ci.yml`) usa o pipeline compartilhado
+`mainuan/.github`: compila e testa em Ubuntu 26.04, gera o pacote, roda
+lintian, instala num Ubuntu 26.04 limpo, executa o programa como usuario comum
+(inclusive o refresh APT via sudoers) e remove/expurga o pacote. Releases sao
+publicadas somente a partir de tags `v<versao>` iguais a `debian/changelog`.
 
 O sudoers instalado permite exclusivamente o comando:
 
