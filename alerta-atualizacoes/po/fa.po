@@ -1,0 +1,77 @@
+# Persian translations for system-upgrade package.
+# Copyright (C) 2026 Mainuan
+# This file is distributed under the same license as the system-upgrade package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: system-upgrade\n"
+"Report-Msgid-Bugs-To: https://github.com/aratie-os/alerta-atualizacao/"
+"issues\n"
+"POT-Creation-Date: 2026-11-16 12:19-0300\n"
+"PO-Revision-Date: 2026-11-16 12:19-0300\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: fa <https://github.com/mainuan>\n"
+"Language: fa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/applications/system-upgrade.desktop.in:3
+#: data/metainfo/io.github.aratie_os.system_upgrade.metainfo.xml.in:4
+msgid "System Updates"
+msgstr "به‌روزرسانی‌های سیستم"
+
+#: data/applications/system-upgrade.desktop.in:4
+#: data/metainfo/io.github.aratie_os.system_upgrade.metainfo.xml.in:5
+msgid "Check for operating system and Flatpak updates"
+msgstr "بررسی به‌روزرسانی‌های سیستم‌عامل و Flatpak"
+
+#: data/applications/system-upgrade.desktop.in:9
+msgid "update;upgrade;packages;software;"
+msgstr "به‌روزرسانی;ارتقا;بسته;نرم‌افزار;update;upgrade;packages;software;"
+
+#: data/autostart/system-upgrade.desktop.in:3
+msgid "System Update Check"
+msgstr "بررسی به‌روزرسانی‌های سیستم"
+
+#: data/autostart/system-upgrade.desktop.in:4
+msgid "Notify when system updates are available"
+msgstr "اطلاع‌رسانی هنگام در دسترس بودن به‌روزرسانی‌های سیستم"
+
+#: data/metainfo/io.github.aratie_os.system_upgrade.metainfo.xml.in:12
+msgid ""
+"System Updates checks APT and Flatpak sources at Plasma login and opens "
+"Discover when the user chooses to update."
+msgstr ""
+"«به‌روزرسانی‌های سیستم» هنگام ورود به Plasma منابع APT و Flatpak را بررسی "
+"می‌کند و هر وقت کاربر بخواهد به‌روزرسانی کند، Discover را باز می‌کند."
+
+#: src/main.cpp:58 src/update_notification.cpp:64
+#: src/update_notification.cpp:75
+#, kde-format
+msgid "Updates Available"
+msgstr "به‌روزرسانی در دسترس است"
+
+#. i18n: accessible name of the warning icon shown in the alert
+#: src/update_notification.cpp:33
+#, kde-format
+msgid "Update alert"
+msgstr "هشدار به‌روزرسانی"
+
+#: src/update_notification.cpp:82
+#, kde-format
+msgid "Updates are available for the system."
+msgstr "به‌روزرسانی‌هایی برای سیستم در دسترس است."
+
+#: src/update_notification.cpp:87
+#, kde-format
+msgctxt "@action:button"
+msgid "Update"
+msgstr "به‌روزرسانی"
+
+#: src/update_notification.cpp:89
+#, kde-format
+msgctxt "@action:button"
+msgid "Cancel"
+msgstr "لغو"

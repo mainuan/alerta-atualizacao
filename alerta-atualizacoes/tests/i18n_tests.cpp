@@ -118,12 +118,12 @@ void I18nTests::rightToLeftCatalogMirrorsLayout()
     UpdateNotification notification(false);
     QVERIFY(notification.isRightToLeft());
 
-    // Urdu is written right to left, but there is no system-upgrade catalog
+    // Yiddish is written right to left, but there is no system-upgrade catalog
     // for it: the interface falls back to English and stays left to right.
     application->setLayoutDirection(Qt::LeftToRight);
-    KLocalizedString::setLanguages({QStringLiteral("ur"), QStringLiteral("en")});
-    QCOMPARE(QLocale(QStringLiteral("ur")).textDirection(), Qt::RightToLeft);
-    QVERIFY(!KLocalizedString::isApplicationTranslatedInto(QStringLiteral("ur")));
+    KLocalizedString::setLanguages({QStringLiteral("yi"), QStringLiteral("en")});
+    QCOMPARE(QLocale(QStringLiteral("yi")).textDirection(), Qt::RightToLeft);
+    QVERIFY(!KLocalizedString::isApplicationTranslatedInto(QStringLiteral("yi")));
     QCOMPARE(CatalogLayoutDirection::effectiveLanguage(), QString());
     CatalogLayoutDirection::apply(*application);
     QCOMPARE(QGuiApplication::layoutDirection(), Qt::LeftToRight);
