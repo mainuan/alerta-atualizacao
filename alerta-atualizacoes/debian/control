@@ -9,6 +9,7 @@ Build-Depends:
  gettext,
  libkf6i18n-dev,
  liblayershellqtinterface-dev,
+ locales-all <!nocheck>,
  qt6-base-dev (>= 6.6),
  qt6-svg-dev,
  sudo <!nocheck>

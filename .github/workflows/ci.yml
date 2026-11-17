@@ -24,7 +24,8 @@ jobs:
       source-dir: alerta-atualizacoes
       release-title: Alerta de Atualizações (system-upgrade)
       # Version consistency (debian/changelog, CMake, AppStream), catalogs,
-      # sudoers syntax and the full CTest suite in an out-of-tree build.
+      # sudoers syntax and the full CTest suite (no skipped test) in an
+      # out-of-tree build with -Werror.
       test-command: |
         scripts/check-version-consistency.sh
         po/i18n.sh check-pot
@@ -33,7 +34,10 @@ jobs:
         build="$(mktemp -d)"
         cmake -S . -B "$build" -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wall -Wextra -Werror"
         cmake --build "$build" --parallel 2
-        ctest --test-dir "$build" --output-on-failure
+        # -V shows the QtTest totals: the pt_BR test needs en_US.UTF-8
+        # (locales-all) and must not be skipped.
+        ctest --test-dir "$build" --output-on-failure -V | tee "$build/ctest.log"
+        test "$(grep -cE '^[0-9]+: Totals: .*, 0 failed, 0 skipped' "$build/ctest.log")" -eq 4
         rm -rf "$build"
       smoke-command: |
         test -x /usr/bin/system-upgrade
