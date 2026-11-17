@@ -13,8 +13,8 @@ Build-Depends:
  qt6-svg-dev
 Standards-Version: 4.7.2
 Rules-Requires-Root: no
-Homepage: https://github.com/aratie-os/alerta-atualizacao
-Vcs-Git: https://github.com/aratie-os/alerta-atualizacao.git
+Homepage: https://github.com/mainuan/alerta-atualizacao
+Vcs-Git: https://github.com/mainuan/alerta-atualizacao.git
 
 Package: system-upgrade
 Architecture: any

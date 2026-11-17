@@ -1,6 +1,6 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: system-upgrade
-Source: https://github.com/aratie-os/alerta-atualizacao
+Source: https://github.com/mainuan/alerta-atualizacao
 
 Files: *
 Copyright: 2026 Aratie OS Developers

@@ -13,7 +13,7 @@ O projeto consulta instalacoes Flatpak de sistema e de usuario. Snap e seu
 backend para o Discover nao sao utilizados deliberadamente.
 
 Pacotes oficiais devem ser baixados pela pagina de
-[GitHub Releases](https://github.com/aratie-os/alerta-atualizacao/releases).
+[GitHub Releases](https://github.com/mainuan/alerta-atualizacao/releases).
 Instrucoes de compilacao, arquitetura e empacotamento estao no
 [README tecnico](alerta-atualizacoes/README.md).
 
