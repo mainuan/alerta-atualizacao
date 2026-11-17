@@ -1,9 +1,11 @@
 #include "discover_launcher.h"
 #include "startup.h"
+#include "update_checker.h"
 #include "update_state.h"
 #include "window_placement.h"
 
 #include <QProcess>
+#include <QSignalSpy>
 #include <QProcessEnvironment>
 #include <QTest>
 
@@ -31,7 +33,61 @@ private slots:
     void liveGuardDoesNotStartInstalledSession();
     void x11PositionUsesBottomRightMargin();
     void waylandSettingsUseBottomRightAnchors();
+    void checkerRunsAllStepsAndReportsUpdates();
+    void checkerContinuesAfterCommandFailsToStart();
 };
+
+namespace {
+UpdateCommand shellCommand(const QString &script)
+{
+    return {QStringLiteral("/bin/sh"), {QStringLiteral("-c"), script}, 10'000};
+}
+}
+
+void UpdateCheckerTests::checkerRunsAllStepsAndReportsUpdates()
+{
+    UpdateChecker checker;
+    checker.setCommand(UpdateChecker::Step::AptUpdate, shellCommand(QStringLiteral("exit 0")));
+    checker.setCommand(UpdateChecker::Step::AptQuery,
+                       shellCommand(QStringLiteral("echo 'Inst example [1.0] (2.0 Ubuntu:26.04/resolute-updates [amd64])'")));
+    checker.setCommand(UpdateChecker::Step::FlatpakSystem, shellCommand(QStringLiteral("exit 0")));
+    checker.setCommand(UpdateChecker::Step::FlatpakUser, shellCommand(QStringLiteral("exit 0")));
+
+    QSignalSpy finished(&checker, &UpdateChecker::finished);
+    checker.start();
+    QVERIFY(finished.wait(10'000));
+    const auto state = finished.takeFirst().at(0).value<UpdateState>();
+    QVERIFY(state.aptUpdateSucceeded);
+    QVERIFY(state.aptQuerySucceeded);
+    QVERIFY(state.aptHasUpdates);
+    QVERIFY(state.flatpakSystemQuerySucceeded);
+    QVERIFY(state.flatpakUserQuerySucceeded);
+    QVERIFY(state.hasUpdates());
+}
+
+void UpdateCheckerTests::checkerContinuesAfterCommandFailsToStart()
+{
+    // Regression: the next step was started from inside the FailedToStart
+    // handler, QProcess discarded it and finished() was never emitted.
+    UpdateChecker checker;
+    checker.setCommand(UpdateChecker::Step::AptUpdate,
+                       {QStringLiteral("/nonexistent/system-upgrade-test"), {}, 10'000});
+    checker.setCommand(UpdateChecker::Step::FlatpakSystem,
+                       shellCommand(QStringLiteral("echo org.example.Application/x86_64/stable")));
+    checker.setCommand(UpdateChecker::Step::FlatpakUser,
+                       {QStringLiteral("/nonexistent/system-upgrade-test"), {}, 10'000});
+
+    QSignalSpy finished(&checker, &UpdateChecker::finished);
+    checker.start();
+    QVERIFY(finished.wait(10'000));
+    const auto state = finished.takeFirst().at(0).value<UpdateState>();
+    QVERIFY(!state.aptUpdateSucceeded);
+    QVERIFY(!state.aptQuerySucceeded);
+    QVERIFY(state.flatpakSystemQuerySucceeded);
+    QVERIFY(state.flatpakSystemHasUpdates);
+    QVERIFY(!state.flatpakUserQuerySucceeded);
+    QVERIFY(state.hasUpdates());
+}
 
 void UpdateCheckerTests::discoverUsesOriginalSessionEnvironment()
 {
