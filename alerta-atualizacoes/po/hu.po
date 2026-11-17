@@ -1,0 +1,81 @@
+# Hungarian translations for system-upgrade package.
+# Copyright (C) 2026 Mainuan
+# This file is distributed under the same license as the system-upgrade package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: system-upgrade\n"
+"Report-Msgid-Bugs-To: https://github.com/aratie-os/alerta-atualizacao/"
+"issues\n"
+"POT-Creation-Date: 2026-11-16 12:19-0300\n"
+"PO-Revision-Date: 2026-11-16 12:19-0300\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: hu <https://github.com/mainuan>\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: data/applications/system-upgrade.desktop.in:3
+#: data/metainfo/io.github.aratie_os.system_upgrade.metainfo.xml.in:4
+msgid "System Updates"
+msgstr "Rendszerfrissítések"
+
+#: data/applications/system-upgrade.desktop.in:4
+#: data/metainfo/io.github.aratie_os.system_upgrade.metainfo.xml.in:5
+msgid "Check for operating system and Flatpak updates"
+msgstr "Az operációs rendszer és a Flatpak frissítéseinek keresése"
+
+#: data/applications/system-upgrade.desktop.in:9
+msgid "update;upgrade;packages;software;"
+msgstr "frissítés;frissítések;csomagok;szoftver;update;upgrade;"
+
+#: data/autostart/system-upgrade.desktop.in:3
+msgid "System Update Check"
+msgstr "Rendszerfrissítések keresése"
+
+#: data/autostart/system-upgrade.desktop.in:4
+msgid "Notify when system updates are available"
+msgstr "Értesítés, ha rendszerfrissítések érhetők el"
+
+# reviewed: "Plasma bejelentkezéskor" ungrammatical; "Plasmába való
+# bejelentkezéskor"
+#: data/metainfo/io.github.aratie_os.system_upgrade.metainfo.xml.in:12
+msgid ""
+"System Updates checks APT and Flatpak sources at Plasma login and opens "
+"Discover when the user chooses to update."
+msgstr ""
+"A Rendszerfrissítések a Plasmába való bejelentkezéskor ellenőrzi az APT- és "
+"Flatpak-forrásokat, és megnyitja a Discovert, ha a felhasználó a frissítést "
+"választja."
+
+#: src/main.cpp:58 src/update_notification.cpp:64
+#: src/update_notification.cpp:75
+#, kde-format
+msgid "Updates Available"
+msgstr "Frissítések érhetők el"
+
+#. i18n: accessible name of the warning icon shown in the alert
+#: src/update_notification.cpp:33
+#, kde-format
+msgid "Update alert"
+msgstr "Frissítési figyelmeztetés"
+
+#: src/update_notification.cpp:82
+#, kde-format
+msgid "Updates are available for the system."
+msgstr "Frissítések érhetők el a rendszerhez."
+
+#: src/update_notification.cpp:87
+#, kde-format
+msgctxt "@action:button"
+msgid "Update"
+msgstr "Frissítés"
+
+#: src/update_notification.cpp:89
+#, kde-format
+msgctxt "@action:button"
+msgid "Cancel"
+msgstr "Mégse"
