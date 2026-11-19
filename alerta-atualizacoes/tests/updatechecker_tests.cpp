@@ -35,6 +35,7 @@ private slots:
     void waylandSettingsUseBottomRightAnchors();
     void checkerRunsAllStepsAndReportsUpdates();
     void checkerContinuesAfterCommandFailsToStart();
+    void checkerQueriesLocalListsWhenRefreshFails();
 };
 
 namespace {
@@ -72,6 +73,8 @@ void UpdateCheckerTests::checkerContinuesAfterCommandFailsToStart()
     UpdateChecker checker;
     checker.setCommand(UpdateChecker::Step::AptUpdate,
                        {QStringLiteral("/nonexistent/system-upgrade-test"), {}, 10'000});
+    checker.setCommand(UpdateChecker::Step::AptQuery,
+                       {QStringLiteral("/nonexistent/system-upgrade-test"), {}, 10'000});
     checker.setCommand(UpdateChecker::Step::FlatpakSystem,
                        shellCommand(QStringLiteral("echo org.example.Application/x86_64/stable")));
     checker.setCommand(UpdateChecker::Step::FlatpakUser,
@@ -86,6 +89,27 @@ void UpdateCheckerTests::checkerContinuesAfterCommandFailsToStart()
     QVERIFY(state.flatpakSystemQuerySucceeded);
     QVERIFY(state.flatpakSystemHasUpdates);
     QVERIFY(!state.flatpakUserQuerySucceeded);
+    QVERIFY(state.hasUpdates());
+}
+
+void UpdateCheckerTests::checkerQueriesLocalListsWhenRefreshFails()
+{
+    // Regression: a failed "apt-get update" skipped the APT query, so pending
+    // updates already present in the local lists were never reported.
+    UpdateChecker checker;
+    checker.setCommand(UpdateChecker::Step::AptUpdate, shellCommand(QStringLiteral("exit 100")));
+    checker.setCommand(UpdateChecker::Step::AptQuery,
+                       shellCommand(QStringLiteral("echo 'Inst example [1.0] (2.0 Ubuntu:26.04/resolute-updates [amd64])'")));
+    checker.setCommand(UpdateChecker::Step::FlatpakSystem, shellCommand(QStringLiteral("exit 0")));
+    checker.setCommand(UpdateChecker::Step::FlatpakUser, shellCommand(QStringLiteral("exit 0")));
+
+    QSignalSpy finished(&checker, &UpdateChecker::finished);
+    checker.start();
+    QVERIFY(finished.wait(10'000));
+    const auto state = finished.takeFirst().at(0).value<UpdateState>();
+    QVERIFY(!state.aptUpdateSucceeded);
+    QVERIFY(state.aptQuerySucceeded);
+    QVERIFY(state.aptHasUpdates);
     QVERIFY(state.hasUpdates());
 }
 
@@ -288,6 +312,7 @@ void UpdateCheckerTests::waylandSettingsUseBottomRightAnchors()
     QVERIFY(!settings.anchors.testFlag(Qt::LeftEdge));
     QCOMPARE(settings.margins, QMargins(0, 0, 24, 24));
     QCOMPARE(settings.exclusiveZone, 0);
+    QVERIFY(!settings.activateOnShow);
 }
 
 QTEST_GUILESS_MAIN(UpdateCheckerTests)

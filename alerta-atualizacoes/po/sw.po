@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: system-upgrade\n"
 "Report-Msgid-Bugs-To: https://github.com/mainuan/alerta-atualizacao/issues\n"
-"POT-Creation-Date: 2026-11-17 04:22-0300\n"
+"POT-Creation-Date: 2026-11-19 01:36-0300\n"
 "PO-Revision-Date: 2026-11-16 12:19-0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: sw <https://github.com/mainuan>\n"
@@ -47,7 +47,7 @@ msgstr ""
 "Plasma na hufungua Discover mtumiaji anapochagua kusasisha."
 
 #: src/main.cpp:58 src/update_notification.cpp:64
-#: src/update_notification.cpp:75
+#: src/update_notification.cpp:77
 #, kde-format
 msgid "Updates Available"
 msgstr "Masasisho Yanapatikana"
@@ -58,18 +58,18 @@ msgstr "Masasisho Yanapatikana"
 msgid "Update alert"
 msgstr "Tahadhari ya masasisho"
 
-#: src/update_notification.cpp:82
+#: src/update_notification.cpp:84
 #, kde-format
 msgid "Updates are available for the system."
 msgstr "Masasisho ya mfumo yanapatikana."
 
-#: src/update_notification.cpp:87
+#: src/update_notification.cpp:89
 #, kde-format
 msgctxt "@action:button"
 msgid "Update"
 msgstr "Sasisha"
 
-#: src/update_notification.cpp:89
+#: src/update_notification.cpp:91
 #, kde-format
 msgctxt "@action:button"
 msgid "Cancel"

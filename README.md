@@ -32,18 +32,18 @@ Login no Plasma → APT + Flatpak → sem atualizações: encerra
 
 - Consulta APT por simulação (`apt-get -s upgrade`), contando só operações `Inst`; respeita as *phased updates* do Ubuntu.
 - Consulta Flatpak de sistema e de usuário (`remote-ls --updates`), sem executar `flatpak update`.
-- Falhas de consulta vão para o stderr e nunca são tratadas como atualização.
+- Falhas de consulta vão para o stderr e nunca são tratadas como atualização. Se a atualização dos índices falhar (rede ainda indisponível no login, um repositório com erro), a consulta APT usa as listas locais em vez de ser pulada.
 - Na sessão Live (`boot=casper`), encerra antes de criar interface, lock ou processos.
-- No Wayland, a janela é ancorada no canto inferior direito por LayerShellQt, sem roubar o foco; no X11, usa a área útil da tela. Ambos com margem de 24 px.
+- No Wayland, a janela é ancorada no canto inferior direito por LayerShellQt, sem roubar o foco (não é ativada ao aparecer); no X11, usa a área útil da tela e também aparece sem ativar a janela. Ambos com margem de 24 px.
 - O Discover é aberto com o ambiente original da sessão Plasma.
 
 ## Instalação
 
-O Alerta de Atualizações já vem instalado na ISO do Mainuan. Para instalar manualmente, baixe `system-upgrade_2.0.5_amd64.deb` e `SHA256SUMS` da [última release](https://github.com/mainuan/alerta-atualizacao/releases/latest) e, na pasta dos dois arquivos:
+O Alerta de Atualizações já vem instalado na ISO do Mainuan. Para instalar manualmente, baixe `system-upgrade_2.0.6_amd64.deb` e `SHA256SUMS` da [última release](https://github.com/mainuan/alerta-atualizacao/releases/latest) e, na pasta dos dois arquivos:
 
 ```bash
 sha256sum --check --ignore-missing SHA256SUMS
-sudo apt install ./system-upgrade_2.0.5_amd64.deb
+sudo apt install ./system-upgrade_2.0.6_amd64.deb
 ```
 
 ## Uso
@@ -95,7 +95,7 @@ cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wall -Wextra 
 cmake --build build --parallel 2
 ctest --test-dir build --output-on-failure -V
 dpkg-buildpackage -us -uc -b
-lintian --fail-on error ../system-upgrade_2.0.5_amd64.deb
+lintian --fail-on error ../system-upgrade_2.0.6_amd64.deb
 ```
 
 O teste de tradução `pt_BR` precisa do pacote `locales-all`, e o CI falha se algum teste for pulado. Depois, o CI instala o `.deb` num Ubuntu 26.04 limpo, confere os arquivos instalados e as permissões do sudoers, executa o programa como usuário comum (inclusive a atualização de índices via sudoers), reinstala, remove e expurga. A Release só é publicada por tag `v<versão>` igual à de `debian/changelog` e nunca substitui uma Release existente.

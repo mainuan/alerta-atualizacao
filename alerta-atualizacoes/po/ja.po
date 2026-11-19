@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: system-upgrade\n"
 "Report-Msgid-Bugs-To: https://github.com/mainuan/alerta-atualizacao/issues\n"
-"POT-Creation-Date: 2026-11-17 04:22-0300\n"
+"POT-Creation-Date: 2026-11-19 01:36-0300\n"
 "PO-Revision-Date: 2026-11-16 11:14-0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: ja <https://github.com/mainuan>\n"
@@ -51,7 +51,7 @@ msgstr ""
 "ユーザが更新を選択すると Discover を開きます。"
 
 #: src/main.cpp:58 src/update_notification.cpp:64
-#: src/update_notification.cpp:75
+#: src/update_notification.cpp:77
 #, kde-format
 msgid "Updates Available"
 msgstr "更新が利用可能です"
@@ -62,18 +62,18 @@ msgstr "更新が利用可能です"
 msgid "Update alert"
 msgstr "更新の通知"
 
-#: src/update_notification.cpp:82
+#: src/update_notification.cpp:84
 #, kde-format
 msgid "Updates are available for the system."
 msgstr "システムの更新が利用可能です。"
 
-#: src/update_notification.cpp:87
+#: src/update_notification.cpp:89
 #, kde-format
 msgctxt "@action:button"
 msgid "Update"
 msgstr "更新"
 
-#: src/update_notification.cpp:89
+#: src/update_notification.cpp:91
 #, kde-format
 msgctxt "@action:button"
 msgid "Cancel"

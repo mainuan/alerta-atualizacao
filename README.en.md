@@ -25,17 +25,17 @@ Tells you at Plasma login when APT or Flatpak updates exist, and opens Discover 
 
 - APT check by simulation, counting only `Inst` lines (respects Ubuntu phased updates).
 - Flatpak check for system and user installations, without running `flatpak update`.
-- Query failures are logged and never reported as updates.
+- Query failures are logged and never reported as updates. If refreshing the APT indexes fails (no network yet at login, a broken repository), the APT check still runs on the local lists.
 - Exits immediately in Casper Live sessions.
-- Wayland placement through LayerShellQt; X11 placement from the available screen area.
+- Wayland placement through LayerShellQt; X11 placement from the available screen area. The alert never takes the keyboard focus when it appears.
 
 ## Installation
 
-Preinstalled on the Mainuan ISO. To install manually, download `system-upgrade_2.0.5_amd64.deb` and `SHA256SUMS` from the [latest release](https://github.com/mainuan/alerta-atualizacao/releases/latest):
+Preinstalled on the Mainuan ISO. To install manually, download `system-upgrade_2.0.6_amd64.deb` and `SHA256SUMS` from the [latest release](https://github.com/mainuan/alerta-atualizacao/releases/latest):
 
 ```bash
 sha256sum --check --ignore-missing SHA256SUMS
-sudo apt install ./system-upgrade_2.0.5_amd64.deb
+sudo apt install ./system-upgrade_2.0.6_amd64.deb
 ```
 
 ## Usage

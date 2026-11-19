@@ -18,9 +18,11 @@ inferior direito do monitor principal. `Atualizar` abre
   pacotes adiados pelo mecanismo de phased updates.
 - Flatpak: consulta `remote-ls --updates --columns=ref` nos escopos system e
   user, sem executar `flatpak update`.
-- Falhas sao registradas em stderr e nunca sao tratadas como atualizacoes.
+- Falhas sao registradas em stderr e nunca sao tratadas como atualizacoes. Se o
+  refresh APT falhar, a consulta APT roda mesmo assim sobre as listas locais.
 - Wayland: LayerShellQt ancora a janela em `Bottom | Right`, com margem de 24 px,
-  layer `Top`, foco sob demanda e zona exclusiva zero.
+  layer `Top`, foco sob demanda, sem ativacao ao aparecer e zona exclusiva zero.
+  No X11 a janela usa `Qt::WA_ShowWithoutActivating`.
 - X11: a posicao usa `QScreen::availableGeometry()` com margem de 24 px.
 
 O SVG preferencial da janela e
@@ -58,8 +60,8 @@ alerta real em `pt_BR` e em ingles (ver `docs/i18n/README.md`).
 
 ```sh
 dpkg-buildpackage -us -uc -b
-scripts/validate-package.sh ../system-upgrade_2.0.5_amd64.deb
-lintian --fail-on error ../system-upgrade_2.0.5_amd64.changes
+scripts/validate-package.sh ../system-upgrade_2.0.6_amd64.deb
+lintian --fail-on error ../system-upgrade_2.0.6_amd64.changes
 ```
 
 O CI (`.github/workflows/ci.yml`) usa o pipeline compartilhado
