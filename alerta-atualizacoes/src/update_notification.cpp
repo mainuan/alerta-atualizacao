@@ -69,6 +69,8 @@ UpdateNotification::UpdateNotification(bool waylandSession, QWidget *parent)
     setWindowIcon(windowIcon);
     setWindowFlags(Qt::Dialog | Qt::WindowTitleHint | Qt::WindowCloseButtonHint);
     setModal(false);
+    // X11: show the alert without activating it; the user clicks to interact.
+    setAttribute(Qt::WA_ShowWithoutActivating);
     setMinimumWidth(420);
     setMaximumWidth(520);
 
@@ -140,7 +142,7 @@ void UpdateNotification::showInPrimaryScreenCorner()
             layerWindow->setLayer(LayerShellQt::Window::LayerTop);
             layerWindow->setKeyboardInteractivity(
                 LayerShellQt::Window::KeyboardInteractivityOnDemand);
-            layerWindow->setActivateOnShow(true);
+            layerWindow->setActivateOnShow(settings.activateOnShow);
             layerWindow->setScreen(screen);
             layerWindow->setScope(QStringLiteral("system-upgrade"));
             layerWindow->setDesiredSize(size());

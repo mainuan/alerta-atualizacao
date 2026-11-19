@@ -157,7 +157,9 @@ void UpdateChecker::completeStep(bool commandSucceeded,
     case Step::AptUpdate:
         m_state.aptUpdateSucceeded = commandSucceeded;
         m_state.aptHasUpdates = false;
-        m_step = commandSucceeded ? Step::AptQuery : Step::FlatpakSystem;
+        // A failed refresh (no network yet at login, one broken repository with
+        // Error-Mode=any) must not hide updates the local lists already know.
+        m_step = Step::AptQuery;
         break;
     case Step::AptQuery:
         m_state.aptQuerySucceeded = commandSucceeded;

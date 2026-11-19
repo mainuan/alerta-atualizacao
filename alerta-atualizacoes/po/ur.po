@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: system-upgrade\n"
 "Report-Msgid-Bugs-To: https://github.com/mainuan/alerta-atualizacao/issues\n"
-"POT-Creation-Date: 2026-11-17 04:22-0300\n"
+"POT-Creation-Date: 2026-11-19 01:36-0300\n"
 "PO-Revision-Date: 2026-11-16 12:19-0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: ur <https://github.com/mainuan>\n"
@@ -47,7 +47,7 @@ msgstr ""
 "اور جب صارف اپ ڈیٹ کرنے کا انتخاب کرے تو Discover کھولتا ہے۔"
 
 #: src/main.cpp:58 src/update_notification.cpp:64
-#: src/update_notification.cpp:75
+#: src/update_notification.cpp:77
 #, kde-format
 msgid "Updates Available"
 msgstr "اپ ڈیٹس دستیاب ہیں"
@@ -58,18 +58,18 @@ msgstr "اپ ڈیٹس دستیاب ہیں"
 msgid "Update alert"
 msgstr "اپ ڈیٹ کا انتباہ"
 
-#: src/update_notification.cpp:82
+#: src/update_notification.cpp:84
 #, kde-format
 msgid "Updates are available for the system."
 msgstr "سسٹم کے لیے اپ ڈیٹس دستیاب ہیں۔"
 
-#: src/update_notification.cpp:87
+#: src/update_notification.cpp:89
 #, kde-format
 msgctxt "@action:button"
 msgid "Update"
 msgstr "اپ ڈیٹ کریں"
 
-#: src/update_notification.cpp:89
+#: src/update_notification.cpp:91
 #, kde-format
 msgctxt "@action:button"
 msgid "Cancel"

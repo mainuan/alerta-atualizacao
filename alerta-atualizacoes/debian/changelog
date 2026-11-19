@@ -1,3 +1,16 @@
+system-upgrade (2.0.6) resolute; urgency=medium
+
+  * O alerta não toma mais o foco do teclado ao aparecer: no Wayland,
+    setActivateOnShow(false) (antes true, contrariando o README); no X11,
+    Qt::WA_ShowWithoutActivating. No login ele pode surgir junto de outras
+    janelas de início de sessão.
+  * Falha em "apt-get update" (rede ainda indisponível no login ou um
+    repositório com erro, já que Error-Mode=any) não pula mais a consulta
+    APT: as atualizações que as listas locais já conhecem continuam sendo
+    informadas. Teste de regressão incluído.
+
+ -- ruscher <rruscher@gmail.com>  Thu, 19 Nov 2026 10:00:00 -0300
+
 system-upgrade (2.0.5) resolute; urgency=medium
 
   * Interface traduzida com KI18n (gettext) em 33 idiomas, seguindo o idioma

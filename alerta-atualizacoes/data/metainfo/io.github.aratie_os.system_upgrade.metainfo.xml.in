@@ -21,6 +21,11 @@
   </categories>
   <content_rating type="oars-1.1"/>
   <releases>
+    <release version="2.0.6" date="2026-11-19">
+      <description translate="no">
+        <p>The alert no longer takes the keyboard focus when it appears, and APT updates are still reported when refreshing the package lists fails.</p>
+      </description>
+    </release>
     <release version="2.0.5" date="2026-11-17">
       <description translate="no">
         <p>Interface translated into 33 languages, a fix for a check that could hang when a command failed to start, and Debian packaging validated by installation tests.</p>

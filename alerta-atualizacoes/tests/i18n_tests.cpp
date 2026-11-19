@@ -25,6 +25,7 @@ private slots:
     void desktopFileCarriesTranslations();
     void metainfoCarriesTranslations();
     void rightToLeftCatalogMirrorsLayout();
+    void alertDoesNotStealFocus();
 
 private:
     static bool expectPortuguese()
@@ -130,6 +131,14 @@ void I18nTests::rightToLeftCatalogMirrorsLayout()
 
     KLocalizedString::clearLanguages();
     application->setLayoutDirection(Qt::LayoutDirectionAuto);
+}
+
+void I18nTests::alertDoesNotStealFocus()
+{
+    // The alert appears at login: it must not take the keyboard focus (X11).
+    UpdateNotification notification(false);
+    QVERIFY(notification.testAttribute(Qt::WA_ShowWithoutActivating));
+    QVERIFY(!notification.isModal());
 }
 
 int main(int argc, char *argv[])

@@ -14,5 +14,6 @@ LayerShellSettings notificationLayerShellSettings()
         Qt::BottomEdge | Qt::RightEdge,
         QMargins(0, 0, 24, 24),
         0,
+        false,
     };
 }
